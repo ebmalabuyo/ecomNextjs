@@ -1,10 +1,10 @@
-import { Products } from "@/components";
+import { ProductsPage } from "@/components";
 import Image from "next/image";
 
 export default function Home() {
   return (
     <main>
-      <Products/>
+      <ProductsPage/>
     </main>
   );
 }
