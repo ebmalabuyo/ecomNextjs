@@ -1,0 +1,14 @@
+.productsContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 80%;
+    border: 1px solid black ;
+    padding: 1rem;
+
+}
+
+
+.sidebarContainer {
+    width: 20%;
+    border: 1px solid yellow;
+}
