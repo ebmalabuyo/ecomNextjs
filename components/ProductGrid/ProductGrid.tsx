@@ -40,7 +40,7 @@ const categories = [
     },
     {
         title: 'Jewelry',
-        value: "jewelry",
+        value: "jewelery",
     },
     {
         title: 'Electronics',
@@ -55,27 +55,29 @@ const ProductGrid = ({products} : GridProps) => {
     const [clientProducts, setClientProducts] = useState(products)
     const [categoryValue, setCategoryValue] = useState(categories[0].value)
 
-    //HANDLING SORTING 
-    useEffect(()=> {
-        if (sortValue === '') {
-            setClientProducts(products)
-        }
-        else{
-        const arrangedProducts = [...clientProducts].sort(sortByProperty(sortValue))
-        setClientProducts(arrangedProducts)
-        }
-    }, [sortValue, clientProducts, products])
-    // END------- HANDLING SORTING
+    // SORTING FUNCTIONALITY
+    const handleSort = (option : string) => {
+
+    const arrangedProducts = [...clientProducts].sort(sortByProperty(option))
+    setClientProducts(arrangedProducts)
+    }
+
+
 
     /// CATEGORY FUNCTIONALITY
     const categoryClick = (option : string) => {
         setCategoryValue(option)
+        if (option === "All") setClientProducts(products)
+        else {
         const categorizedItems = products.filter((item) => item.category === option)
         setClientProducts(categorizedItems)
+        setSortValue('')
+        }
     }
 
   return (
     <>
+    {/* CATEGORIES EDIT  */}
     <div className="md:w-40 border-blue-700  md:col-span-1 md:row-span-2 border ">
             <b><h2>Categories</h2></b>
             <ul className=' flex flex-col gap-6'>
@@ -84,11 +86,13 @@ const ProductGrid = ({products} : GridProps) => {
             })}
             </ul>
         </div>
+    {/*END----------- CATEGORIES EDIT  */}
+
 
     {/* SORTING TAB  */}
-    <div className='md:col-span-2 md:col-start-2  border border-green-700 '>
+    <div className='md:col-span-2 md:col-start-2  border border-green-700'>
     <label htmlFor="categories" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sort By</label>
-      <select onChange={(e) => setSortValue(e.target.value)} value={sortValue} id="categories" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-50 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+      <select onChange={(e) => handleSort(e.target.value)} value={sortValue} id="categories" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-50 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
       {sortedItems.map((each,i) => {
         return <option key={each.value} value={each.value}>{each.title}</option>
       })}
@@ -97,7 +101,7 @@ const ProductGrid = ({products} : GridProps) => {
     {/* END ------ SORTING TAB */}
 
       {/* PRODUCT GRID  */}
-    <div className="grid grid-cols-2 gap-2 p-2  md:col-span-2  md:grid-cols-3  border border-black">
+    <div className=" grid grid-cols-2 gap-2 p-2  md:col-span-2  md:grid-cols-3  border border-black">
             {clientProducts.map((eachItem : Product) => {
                 return <div key={eachItem.id}>
                     <ProductCard

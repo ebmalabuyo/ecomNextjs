@@ -7,8 +7,8 @@ import Link from 'next/link'
 
 const ProductCard = ({id, title, price, description, image} : Product) => {
     return (
-    <div className="border text-sm flex flex-col items-center h-full justify-between">
-        <div  className="relative overflow-hidden w-20 h-40">
+    <div className="border text-sm flex flex-col items-center h-full justify-between w-full">
+        <div  className="relative overflow-hidden w-32 h-40">
         <Image
         src={image}
         alt='product image'

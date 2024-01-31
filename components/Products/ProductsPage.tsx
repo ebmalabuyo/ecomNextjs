@@ -14,7 +14,7 @@ const ProductsPage = async () => {
 
 
   return (
-        <div className="md:grid  md:grid-col-3 md:gap-2 lg:mt-8">
+        <div className="md:grid  md:grid-col-3 lg:mt-8">
         {/* <div className="md:w-40 border-blue-700 md:col-start-1 md:col-span-1 md:row-span-4 border ">
             <SideBar
             />
