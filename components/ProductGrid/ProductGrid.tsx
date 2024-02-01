@@ -66,6 +66,7 @@ const ProductGrid = ({products} : GridProps) => {
 
     /// CATEGORY FUNCTIONALITY
     const categoryClick = (option : string) => {
+        if (option === categoryValue) return
         setCategoryValue(option)
         if (option === "All") setClientProducts(products)
         else {
@@ -78,9 +79,9 @@ const ProductGrid = ({products} : GridProps) => {
   return (
     <>
     {/* CATEGORIES EDIT  */}
-    <div className="md:w-40 border-blue-700  md:col-span-1 md:row-span-2 border ">
+    <div className=" flex flex-col items-center md:w-48 border-blue-700  md:col-span-1 md:row-span-2 border ">
             <b><h2>Categories</h2></b>
-            <ul className=' flex flex-col gap-6'>
+            <ul>
             {categories.map(each=> {
                 return <li className={`${categoryValue === each.value ? 'text-blue-600':''} hover:cursor-pointer`} onClick={() =>categoryClick(each.value)} key={each.value}>{each.title}</li>
             })}
@@ -90,7 +91,7 @@ const ProductGrid = ({products} : GridProps) => {
 
 
     {/* SORTING TAB  */}
-    <div className='md:col-span-2 md:col-start-2  border border-green-700'>
+    <div className='md:col-span-2 md:col-start-2 border border-green-700 min-w-full'>
     <label htmlFor="categories" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sort By</label>
       <select onChange={(e) => handleSort(e.target.value)} value={sortValue} id="categories" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-50 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
       {sortedItems.map((each,i) => {
@@ -100,16 +101,16 @@ const ProductGrid = ({products} : GridProps) => {
     </div>
     {/* END ------ SORTING TAB */}
 
+
       {/* PRODUCT GRID  */}
-    <div className=" grid grid-cols-2 gap-2 p-2  md:col-span-2  md:grid-cols-3  border border-black">
+    <div className=" grid grid-cols-2 gap-2 p-2 md:col-span-2 md:grid-cols-3 border border-black">
             {clientProducts.map((eachItem : Product) => {
-                return <div key={eachItem.id}>
+                return <div  key={eachItem.id}>
                     <ProductCard
                     id={eachItem.id}
                     title={eachItem.title}
                     price={eachItem.price}
                     category={eachItem.category}
-                    description={eachItem.description}
                     image={eachItem.image}
                 /></div>
             })}

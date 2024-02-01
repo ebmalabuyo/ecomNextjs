@@ -5,9 +5,9 @@ import Image from 'next/image'
 import styles from "./ProductCard.module.css"
 import Link from 'next/link'
 
-const ProductCard = ({id, title, price, description, image} : Product) => {
+const ProductCard = ({id, title, price, image} : Product) => {
     return (
-    <div className="border text-sm flex flex-col items-center h-full justify-between w-full">
+    <div className="border border-blue-700 text-sm flex flex-col items-center h-full justify-between">
         <div  className="relative overflow-hidden w-32 h-40">
         <Image
         src={image}
@@ -15,7 +15,7 @@ const ProductCard = ({id, title, price, description, image} : Product) => {
         fill
         />
         </div>
-        <Link href={`/products/${id}`}><p>{title}</p></Link>
+        <Link href={`/products/${id}`} className=''><p>{title}</p></Link>
         <p>${price}</p>
     </div>
   )
