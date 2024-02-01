@@ -4,6 +4,7 @@ import { ProductCard, SideBar } from '..'
 import { Product } from '@/types'
 import { ChangeEvent } from 'react'
 import sortByProperty from '@/utils'
+import { IoSearch } from "react-icons/io5";
 
 type GridProps = {
     products: Product[]
@@ -76,9 +77,10 @@ const ProductGrid = ({products} : GridProps) => {
     }
 
   return (
-    <div className='md:flex md:flex-row p-2'>
+    <div className='md:flex items-start md:flex-row p-2 gap-12'>
+    
     {/* CATEGORIES EDIT  */}
-    <div className=" flex flex-col items-center md:w-48">
+    <div className=" flex flex-col items-center md:w-48 md:sticky md:top-0 md:z-10">
             <b><h2>Categories</h2></b>
             <ul>
             {categories.map(each=> {
@@ -89,20 +91,38 @@ const ProductGrid = ({products} : GridProps) => {
     {/*END----------- CATEGORIES EDIT  */}
 
     <div className='md:col-span-2 md:col-start-1 w-full flex flex-col'>
-    {/* SORTING TAB  */}
-    <div className=' border border-green-700 min-w-full p-2'>
-    <label htmlFor="categories" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sort By</label>
-      <select onChange={(e) => handleSort(e.target.value)} value={sortValue} id="categories" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-50 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-      {sortedItems.map((each,i) => {
-        return <option key={each.value} value={each.value}>{each.title}</option>
-      })}
-    </select>
+
+    <div className='md:p-4 '>
+            <h1 className='font-bold'>Latest Products</h1>
+    </div>
+    
+    {/* SORTING TAB & SEARCH BAR */}
+    <div className=' min-w-full p-2 sticky top-0 z-10 flex justify-between items-center'>
+    <div >
+        <label htmlFor="categories" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sort By</label>
+        <select onChange={(e) => handleSort(e.target.value)} value={sortValue} id="categories" className="w-12 md:w-40 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        {sortedItems.map((each,i) => {
+            return <option key={each.value} value={each.value}>{each.title}</option>
+        })}
+        </select>
+    </div>
+
+    <div className='flex items-center gap-1'>
+        <label htmlFor="searchbar"><IoSearch /></label>
+        <input
+        id='searchbar'
+        className='bg-white rounded-xl p-1'
+        type='text'
+        placeholder='Search...'
+        />
+    </div>
+
     </div>
     {/* END ------ SORTING TAB */}
 
 
       {/* PRODUCT GRID  */}
-    <div className=" grid grid-cols-2 md:grid-cols-3 gap-2 w-full h-full">
+    <div className=" grid grid-cols-2 md:grid-cols-3 gap-4 w-full h-full ">
             {clientProducts.map((eachItem : Product) => {
                 return <div  key={eachItem.id}>
                     <ProductCard

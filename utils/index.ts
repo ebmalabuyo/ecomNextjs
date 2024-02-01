@@ -12,20 +12,18 @@ import { Product } from "@/types"
 }
 
 
-
-
-export const SortBy = (value : string, products : Product[]) => {
-    if (value === "Lowest Price") {
-      return products.sort((a : Product,b : Product) => a.price - b.price)
+export const getProductById =async (id : string) => {
+    try{
+      const res = await fetch(`https://fakestoreapi.com/products/${id}`, {cache:'no-store'})
+      const data = res.json()
+      return data
+    }catch(error) {
+      console.error(error)
     }
-    else if ( value === "Highest Price") {
-       return products.sort((a : Product, b : Product) => b.price - a.price)
-    }
-    return products
-    // else if (value === "Best Rating") {
-    //     products.sort((a : Product, b : Product) => b.rating?.rate - a.rating?.rate) 
-    // }
+  
 }
+
+
 
 const sortByProperty = (prop : string, order = 1) => {
     if (order !== -1) order = 1;
