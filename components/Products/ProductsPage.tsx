@@ -14,13 +14,10 @@ const ProductsPage = async () => {
 
 
   return (
-        <div className="md:grid md:grid-col-2 lg:mt-8 w-full">
-
-
-        <div className=' border border-red-700 md:col-span-2 md:col-start-2'>
+        <div className="flex flex-col">
+        <div className='md:p-4 '>
             <h1>Products</h1>
         </div>
-
 
             <ProductGrid
                 products={products}

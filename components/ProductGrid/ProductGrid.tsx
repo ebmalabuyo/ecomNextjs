@@ -4,7 +4,6 @@ import { ProductCard, SideBar } from '..'
 import { Product } from '@/types'
 import { ChangeEvent } from 'react'
 import sortByProperty from '@/utils'
-import { title } from 'process'
 
 type GridProps = {
     products: Product[]
@@ -77,9 +76,9 @@ const ProductGrid = ({products} : GridProps) => {
     }
 
   return (
-    <>
+    <div className='md:flex md:flex-row p-2'>
     {/* CATEGORIES EDIT  */}
-    <div className=" flex flex-col items-center md:w-48 border-blue-700  md:col-span-1 md:row-span-2 border ">
+    <div className=" flex flex-col items-center md:w-48">
             <b><h2>Categories</h2></b>
             <ul>
             {categories.map(each=> {
@@ -89,9 +88,9 @@ const ProductGrid = ({products} : GridProps) => {
         </div>
     {/*END----------- CATEGORIES EDIT  */}
 
-
+    <div className='md:col-span-2 md:col-start-1 w-full flex flex-col'>
     {/* SORTING TAB  */}
-    <div className='md:col-span-2 md:col-start-2 border border-green-700 min-w-full'>
+    <div className=' border border-green-700 min-w-full p-2'>
     <label htmlFor="categories" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sort By</label>
       <select onChange={(e) => handleSort(e.target.value)} value={sortValue} id="categories" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-50 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
       {sortedItems.map((each,i) => {
@@ -103,7 +102,7 @@ const ProductGrid = ({products} : GridProps) => {
 
 
       {/* PRODUCT GRID  */}
-    <div className=" grid grid-cols-2 gap-2 p-2 md:col-span-2 md:grid-cols-3 border border-black">
+    <div className=" grid grid-cols-2 md:grid-cols-3 gap-2 w-full h-full">
             {clientProducts.map((eachItem : Product) => {
                 return <div  key={eachItem.id}>
                     <ProductCard
@@ -116,7 +115,10 @@ const ProductGrid = ({products} : GridProps) => {
             })}
         </div>
         {/* END-------- PRODUCT GRID  */}
-        </>
+        </div>
+
+        </div>
+
 
   )
 }
