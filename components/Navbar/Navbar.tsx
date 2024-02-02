@@ -1,11 +1,14 @@
+"use client"
 import React from 'react'
 import { FaShoppingBag } from "react-icons/fa";
 import Link from 'next/link';
 import { FaShoppingCart } from "react-icons/fa";
 import { SiNextdotjs } from "react-icons/si";
-import styles from "./Navbar.module.css"
+import { useSession, signOut } from 'next-auth/react';
 
 const Navbar = () => {
+    const {data: session} = useSession()
+
   return (
 
     <nav className=" w-full flex p-8 justify-between border-b-2 border-black text-sm md:text-md">
@@ -14,17 +17,19 @@ const Navbar = () => {
             <a><h3 >Source Code</h3></a>
         </div>
 
-        <div className='flex lg:w-1/4 md:justify-end items-center gap-2'>
+
+            <Link href={"/"} className='flex lg:w-1/4 md:justify-end items-center gap-1'>
             <SiNextdotjs size={40}/>
             SHOPPING
-        </div>
-        
+            </Link>
+
+
         <div className="flex gap-4 lg:w-1/2 lg:justify-end lg:mr-4">
             <h3>
-                <Link href="/"> Sign In</Link>
+               {!session ? <Link href="/login">Login</Link> : <button onClick={() => signOut()}>Logout</button>}
             </h3>
             <h3>
-                <Link href="/" className='flex'>
+                <Link href="/cart" className='flex'>
                     <h3>Cart</h3> <FaShoppingCart/> 
                     </Link>
             </h3>

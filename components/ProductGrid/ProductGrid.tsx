@@ -122,7 +122,7 @@ const ProductGrid = ({products} : GridProps) => {
 
 
       {/* PRODUCT GRID  */}
-    <div className=" grid grid-cols-2 md:grid-cols-3 gap-4 w-full h-full ">
+    <div className=" grid grid-cols-2 md:grid-cols-3 gap-4 w-full h-full p-4 ">
             {clientProducts.map((eachItem : Product) => {
                 return <div  key={eachItem.id}>
                     <ProductCard
