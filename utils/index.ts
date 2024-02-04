@@ -46,3 +46,8 @@ const sortByProperty = (prop : string, order = 1) => {
   };
   
   export default sortByProperty;
+
+export const isEmail = (email : string) => {
+  const regex = /^\S+@\S+\.\S+$/
+  return regex.test(email)
+}
