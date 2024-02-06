@@ -52,6 +52,10 @@ const Login = () => {
           setError("Email or Password is incorrect")
         }
       };
+
+      if (session.status === "loading") {
+        return (<p className='flex justify-center'>Loading...</p>)
+      }
     
       return (session.status !== "authenticated" &&(
         <div className="flex flex-col items-center container mx-auto mt-8">

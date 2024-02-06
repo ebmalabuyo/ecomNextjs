@@ -11,7 +11,7 @@ const Navbar = () => {
 
   return (
 
-    <nav className=" w-full flex p-8 justify-between border-b-2 border-black text-sm md:text-md">
+    <nav className=" w-full flex p-8 justify-between border-b-2 border-black text-xs md:text-sm">
         <div className="hidden lg:flex gap-6 md:flex-grow text-xs">
             <a><h3 >Meet the Developer</h3></a>
             <a><h3 >Source Code</h3></a>
@@ -26,7 +26,10 @@ const Navbar = () => {
 
         <div className="flex gap-4 lg:w-1/2 lg:justify-end lg:mr-4">
             <h3>
-               {!session ? <Link href="/login">Login</Link> : <button onClick={() => signOut()}>Logout</button>}
+               {!session ? 
+               <Link href="/login" className='text-white border bg-blue-700 border-blue-600 p-2 rounded'>Login</Link> 
+               : <button onClick={() => signOut()} className='text-white border bg-blue-700 border-blue-600 p-2 rounded'>Logout</button>
+               }
             </h3>
             <h3>
                 <Link href="/cart" className='flex'>

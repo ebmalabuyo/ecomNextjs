@@ -4,6 +4,7 @@ import { Navbar } from "@/components";
 import './globals.css'
 import  SessionProvider from "../utils/sessionProvider";
 import { getServerSession } from "next-auth";
+import StoreHelper from "@/utils/storeHelper";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,6 +19,7 @@ export default async function RootLayout({
 }>)
 
 
+
 {
   const session = await getServerSession()
   return (
@@ -25,6 +27,7 @@ export default async function RootLayout({
       <body >
         <SessionProvider session={session}>
         <Navbar/>
+        <StoreHelper cart={[]}/>
         {children}
         </SessionProvider>
       </body>
