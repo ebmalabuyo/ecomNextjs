@@ -11,11 +11,11 @@ import StoreHelper from '@/utils/storeHelper';
 const Navbar = () => {
     const {data: session} = useSession()
     const cartLength = useStore((state) => state.cart.length)
-    const cart = useStore((state)=> state.cart)
+    // const {cart} = useStore()
 
   return (
     <>
-    <StoreHelper cart={cart}/>
+    {/* <StoreHelper cart={cart}/> */}
     <nav className=" w-full flex p-8 justify-between border-b-2 border-black text-xs md:text-sm">
         <div className="hidden lg:flex gap-6 md:flex-grow text-xs">
             <a><h3 >Meet the Developer</h3></a>

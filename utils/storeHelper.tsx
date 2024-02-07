@@ -10,9 +10,10 @@ interface storeProps {
 }
 
 function StoreHelper({cart} : storeProps) {
+
     const initialized = useRef(false)
     if(!initialized.current){
-        useStore.setState({cart})
+        // useStore.setState({cart})
         initialized.current = true
     }
     return null
