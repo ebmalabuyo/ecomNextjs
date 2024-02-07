@@ -5,12 +5,17 @@ import Link from 'next/link';
 import { FaShoppingCart } from "react-icons/fa";
 import { SiNextdotjs } from "react-icons/si";
 import { useSession, signOut } from 'next-auth/react';
+import { useStore } from '@/utils/store';
+import StoreHelper from '@/utils/storeHelper';
 
 const Navbar = () => {
     const {data: session} = useSession()
+    const cartLength = useStore((state) => state.cart.length)
+    const cart = useStore((state)=> state.cart)
 
   return (
-
+    <>
+    <StoreHelper cart={cart}/>
     <nav className=" w-full flex p-8 justify-between border-b-2 border-black text-xs md:text-sm">
         <div className="hidden lg:flex gap-6 md:flex-grow text-xs">
             <a><h3 >Meet the Developer</h3></a>
@@ -33,12 +38,14 @@ const Navbar = () => {
             </h3>
             <h3>
                 <Link href="/cart" className='flex'>
-                    <h3>Cart</h3> <FaShoppingCart/> 
+                    <FaShoppingCart size={20}/> 
+                    <h3>{`(${cartLength})`}</h3> 
                     </Link>
             </h3>
         </div>
 
         </nav>
+        </>
   )
 }
 
