@@ -4,6 +4,8 @@ import { Navbar } from "@/components";
 import './globals.css'
 import  SessionProvider from "../utils/sessionProvider";
 import { getServerSession } from "next-auth";
+import StoreHelper from "@/utils/storeHelper";
+import { useStore } from "zustand";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,6 +18,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>)
+
 
 
 {
