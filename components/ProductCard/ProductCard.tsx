@@ -2,7 +2,6 @@ import React from 'react'
 import { Button } from '..'
 import { Product } from '@/types'
 import Image from 'next/image'
-import styles from "./ProductCard.module.css"
 import Link from 'next/link'
 
 const ProductCard = ({id, title, price, image} : Product) => {

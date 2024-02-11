@@ -6,7 +6,7 @@ import { FaShoppingCart } from "react-icons/fa";
 import { SiNextdotjs } from "react-icons/si";
 import { useSession, signOut } from 'next-auth/react';
 import { useStore } from '@/utils/store';
-import StoreHelper from '@/utils/storeHelper';
+import { IoPersonOutline } from "react-icons/io5";
 
 const Navbar = () => {
     const {data: session} = useSession()
@@ -18,8 +18,8 @@ const Navbar = () => {
     {/* <StoreHelper cart={cart}/> */}
     <nav className=" w-full flex p-8 justify-between border-b-2 border-black text-xs md:text-sm">
         <div className="hidden lg:flex gap-6 md:flex-grow text-xs">
-            <a><h3 >Meet the Developer</h3></a>
-            <a><h3 >Source Code</h3></a>
+            <a href='https://www.ebmcodes.tech/' target='_blank'><h3 >Meet the Developer</h3></a>
+            <a href='https://github.com/ebmalabuyo/portfolioNext'><h3 >Source Code</h3></a>
         </div>
 
 
@@ -32,7 +32,7 @@ const Navbar = () => {
         <div className="flex gap-4 lg:w-1/2 lg:justify-end lg:mr-4">
             <h3>
                {!session ? 
-               <Link href="/login" className='text-white border bg-blue-700 border-blue-600 p-2 rounded'>Login</Link> 
+               <Link href="/login" className=' flex items-center gap-1'> <IoPersonOutline size={20}/> <p>Login</p></Link> 
                : <button onClick={() => signOut()} className='text-white border bg-blue-700 border-blue-600 p-2 rounded'>Logout</button>
                }
             </h3>

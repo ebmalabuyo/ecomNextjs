@@ -51,11 +51,21 @@ const categories = [
 
 const ProductGrid = ({products} : GridProps) => {
 
-    const [sortValue, setSortValue] = useState('')
+
     const [clientProducts, setClientProducts] = useState(products)
-    const [categoryValue, setCategoryValue] = useState(categories[0].value)
+
+
+
+    // Search bar functionality
+    const [searchValue, setSearchValue] = useState('');
+    const handleSearch = (e : ChangeEvent<HTMLInputElement>) => {
+        setSearchValue(e.target.value);
+        const potentialItems = products.filter((prod) => prod.title.toLowerCase().includes(e.target.value))
+        setClientProducts(potentialItems)
+    }
 
     // SORTING FUNCTIONALITY
+    const [sortValue, setSortValue] = useState('')
     const handleSort = (option : string) => {
 
     const arrangedProducts = [...clientProducts].sort(sortByProperty(option))
@@ -65,6 +75,7 @@ const ProductGrid = ({products} : GridProps) => {
 
 
     /// CATEGORY FUNCTIONALITY
+    const [categoryValue, setCategoryValue] = useState(categories[0].value)
     const categoryClick = (option : string) => {
         if (option === categoryValue) return
         setCategoryValue(option)
@@ -114,6 +125,8 @@ const ProductGrid = ({products} : GridProps) => {
         className='bg-white rounded-xl p-1'
         type='text'
         placeholder='Search...'
+        value={searchValue}
+        onChange={(e) => handleSearch(e)}
         />
     </div>
 
