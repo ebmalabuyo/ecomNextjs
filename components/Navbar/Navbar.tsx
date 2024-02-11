@@ -18,8 +18,8 @@ const Navbar = () => {
     {/* <StoreHelper cart={cart}/> */}
     <nav className=" w-full flex p-8 justify-between border-b-2 border-black text-xs md:text-sm">
         <div className="hidden lg:flex gap-6 md:flex-grow text-xs">
-            <a><h3 >Meet the Developer</h3></a>
-            <a><h3 >Source Code</h3></a>
+            <a href='https://www.ebmcodes.tech/' target='_blank'><h3 >Meet the Developer</h3></a>
+            <a href='https://github.com/ebmalabuyo/portfolioNext'><h3 >Source Code</h3></a>
         </div>
 
 

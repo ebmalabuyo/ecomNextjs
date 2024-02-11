@@ -9,15 +9,15 @@ interface CartState {
     removeFromCart: (item : Product) => void 
 }
 
-const remove = (arr : Product[], item : Product) => 
-{
-    const itemIndex = arr.indexOf(item);
-    if (itemIndex > -1){
-        arr.splice(itemIndex, 1)
+// const remove = (arr : Product[], item : Product) => 
+// {
+//     const itemIndex = arr.indexOf(item);
+//     if (itemIndex > -1){
+//         arr.splice(itemIndex, 1)
         
-    }
-    return arr
-}
+//     }
+//     return arr
+// }
 
 // export const useStore = create<CartState>()((set) => ({
 //     cart: [],
@@ -27,13 +27,19 @@ const remove = (arr : Product[], item : Product) =>
 
 // }
 // ))
+// get()?.cart.reduce((acc, curVal) => acc + curVal.price, initialCartTotal)
+const initialCartTotal = 0
 
 export const useStore = create<CartState>()(
     persist(
         (set, get) => ({
             cart: [],
             cartTotal: 0,
-            addToCart: (item) => set({cart: [...get().cart, item]}),
+            addToCart: (item) => {
+                
+                set({cart: [...get().cart, item]})
+                set({cartTotal: get()?.cart.reduce((acc, curVal) => acc + curVal.price, initialCartTotal)})
+            },
             removeFromCart: (item) => set((state) => ({
                 cart: state.cart.filter(otherItem => otherItem !== item)
             }))
