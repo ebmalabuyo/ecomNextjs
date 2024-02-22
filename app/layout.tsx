@@ -6,6 +6,7 @@ import  SessionProvider from "../utils/sessionProvider";
 import { getServerSession } from "next-auth";
 import StoreHelper from "@/utils/storeHelper";
 import { useStore } from "zustand";
+import Navigation from "@/components/Navbar/Navigation";
 
 export const metadata: Metadata = {
   title: "EBMShop Next App",
@@ -27,7 +28,7 @@ export default async function RootLayout({
     <html lang="en">
       <body >
         <SessionProvider session={session}>
-        <Navbar/>
+        <Navigation/>
         {children}
         </SessionProvider>
       </body>
