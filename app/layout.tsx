@@ -9,7 +9,7 @@ import { useStore } from "zustand";
 import Navigation from "@/components/Navbar/Navigation";
 
 export const metadata: Metadata = {
-  title: "EBMShop Next App",
+  title: "EBM Next Shop",
   description: "EBM shop application with NextJS",
 };
 

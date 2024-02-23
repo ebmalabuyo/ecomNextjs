@@ -20,10 +20,10 @@ const Navigation = () => {
     {/* <StoreHelper cart={cart}/> */}
     <nav className='flex justify-between p-2 text-xs md:text-sm mr-0 ml-2 md:mr-10 md:ml-10 m-2 '>
         <div className='flex w-full items-center'>
-            <div className='w-full md:hidden'>
-            <FiAlignJustify size={30}/>
+            <div className='w-full md:hidden z-10' >
+            <FiAlignJustify size={30} onClick={()=>setToggleNav(!toggleNav)}className={`${toggleNav ? "rotate-90" : ""} transition-all`} />
             </div>
-            <div className='hidden md:flex gap-3'>
+            <div className={` flex flex-col md:flex-row gap-3 md:static ${toggleNav ? " left-0   border" : "-left-96 "} inset-y-0 items-center transition-all ease-in-out text-center md:border-none  absolute mt-20 md:mt-0 z-20 p-6 md:p-0 `}>
             <a href='https://www.ebmcodes.tech/' target='_blank'><h3>Meet the Developer</h3></a>
             <a href='https://github.com/ebmalabuyo/portfolioNext'><h3 >Source Code</h3></a>
             </div>
