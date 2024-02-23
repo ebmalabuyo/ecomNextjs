@@ -1,11 +1,11 @@
-import NextAuth from "next-auth"
+import NextAuth, { NextAuthOptions } from "next-auth"
 import GithubProvider from "next-auth/providers/github"
 import CredentialsProvider from "next-auth/providers/credentials"
 import dbConnect from "@/utils/db"
 import User from "@/models/User"
 
 import bcrypt from "bcryptjs"
-export const authOptions : NextAuthOptions = {
+const authOptions : NextAuthOptions = {
   // Configure one or more authentication providers
   providers: [
     CredentialsProvider({
