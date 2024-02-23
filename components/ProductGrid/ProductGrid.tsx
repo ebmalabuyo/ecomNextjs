@@ -5,6 +5,7 @@ import { Product } from '@/types'
 import { ChangeEvent } from 'react'
 import sortByProperty from '@/utils'
 import { IoSearch } from "react-icons/io5";
+import ProductItem from '../ProductCard/ProductItem'
 
 type GridProps = {
     products: Product[]
@@ -135,9 +136,9 @@ const ProductGrid = ({products} : GridProps) => {
 
 
       {/* PRODUCT GRID  */}
-    <div className=" grid grid-cols-2 md:grid-cols-3 gap-4 w-full h-full p-4 ">
+    <div className=" grid grid-cols-2 md:grid-cols-3 gap-4 p-4 ">
             {clientProducts.map((eachItem : Product) => {
-                return <div  key={eachItem.id}>
+                return <div  key={eachItem.id} className=''>
                     <ProductCard
                     id={eachItem.id}
                     title={eachItem.title}
