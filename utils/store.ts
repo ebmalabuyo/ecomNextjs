@@ -1,4 +1,5 @@
 import { Product } from "@/types"
+import { stat } from "fs"
 import { create } from "zustand"
 import { persist, createJSONStorage } from "zustand/middleware"
 
@@ -40,9 +41,16 @@ export const useStore = create<CartState>()(
                 set({cart: [...get().cart, item]})
                 set({cartTotal: get()?.cart.reduce((acc, curVal) => acc + curVal.price, initialCartTotal)})
             },
-            removeFromCart: (item) => set((state) => ({
-                cart: state.cart.filter(otherItem => otherItem !== item)
-            }))
+            removeFromCart: (item) => {
+                
+                
+                set((state) => ({
+                cart: state.cart.filter(otherItem => otherItem !== item)}))
+                
+                set((state) => ({
+                    cartTotal: state.cartTotal - item.price
+                }))
+        }
         }
         ), 
         {
