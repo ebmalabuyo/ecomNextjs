@@ -12,18 +12,21 @@ export default function Home() {
                 <p className='bg-[#c28ca5] text-center'>Spring is right around the corner. Find the items you need to ring in the new season!</p>
                 <p className='bg-[#c28ca5] text-center'>(JK this is not a real ecom site just a practice site)</p>
             </div>
-            <div className="flex justify-center">
-              <div className="overflow-hidden relative flex justify-center w-96 h-96 bg-hero bg-no-repeat">
-              <div className="absolute bottom-0 flex flex-col items-center">
-                    <p>New Arrivals</p>
-                    <h1>Summer Utility Edit</h1>
-                  <Link href={"/shop"}>Shop Now</Link>
+            <div className="relative flex justify-center w-full h-full ">
+                <Image 
+                    src="/19.png"
+                    alt="Image for hero"
+                    width={400}
+                    height={300}
+                />
+                <div className="absolute bottom-20 flex flex-col items-center">
+                      <p className="font-bold text-lg">New Arrivals</p>
+                      <h1 className="font-bold sm:text-4xl text-2xl">Summer Utility Edit</h1>
+                      <Link href={"/shop"}>Shop Now</Link>
                 </div>
-              </div>
-                
             </div>
+          </div>
       </div>
-      
-    </div>
+
   );
 }
