@@ -6,6 +6,8 @@ import { ChangeEvent } from 'react';
 import { signIn, useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { FormEvent } from 'react';
+import { isEmail } from '@/utils';
+import Link from 'next/link';
 
 const Login = () => {
   const session  = useSession()
@@ -49,7 +51,12 @@ const Login = () => {
           router.replace("/")
         }
         else{
+          if(!isEmail(formData.email)){
+            setError("Not a valid email")
+          }
+          else{
           setError("Email or Password is incorrect")
+          }
         }
       };
 
@@ -81,13 +88,16 @@ const Login = () => {
             className="w-full border border-gray-300 p-2"
           />
         </label>
-        {error && <p>{error}</p>}
+        <div className='flex flex-col'>
+        <Link className='text-center text-blue-500' href={"/signup"}>Make an account</Link>
         <button
           type="submit"
           className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue active:bg-blue-800"
         >
           Login
         </button>
+        {error && <p>{error}</p>}
+        </div>
       </form>
     </div>))
     };

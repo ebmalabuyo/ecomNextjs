@@ -24,6 +24,18 @@ export const getProductById =async (id : string) => {
 }
 
 
+export const getTopProducts = async (limit: number) => {
+  try{
+    const res = await fetch(`https://fakestoreapi.com/products?sort=rating&limit=${limit}`, {cache:'no-store'})
+    const data = res.json()
+    return data;
+    
+  }catch(error) {
+    console.error(error)
+  }
+}
+
+
 
 const sortByProperty = (prop : string, order = 1) => {
   if (order !== -1) order = 1;
@@ -51,6 +63,17 @@ const sortByProperty = (prop : string, order = 1) => {
 };
   
   export default sortByProperty;
+
+const sortByRating = (a: Product, b: Product) => {
+  if(a.rating.rate > b.rating.rate) {
+    
+  }
+  if(a.rating.rate < b.rating.rate) {
+
+  }
+
+  return 0
+}
 
 export const isEmail = (email : string) => {
   const regex = /^\S+@\S+\.\S+$/

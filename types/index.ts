@@ -7,7 +7,7 @@ export interface Product {
     category:string;
     description?:string
     image: string;
-    rating?: RatingObject
+    rating: RatingObject
 }
 
 export interface RatingObject {

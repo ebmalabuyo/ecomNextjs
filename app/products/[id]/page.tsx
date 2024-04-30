@@ -3,6 +3,7 @@ import { getProductById } from '@/utils'
 import React from 'react'
 import Image from 'next/image'
 import { Button } from '@/components'
+import { useRouter } from 'next/router'
 interface ProductPageProps {
     params : {
         id: string
@@ -15,6 +16,7 @@ interface ProductPageProps {
 const page = async ({params} :ProductPageProps) => {
   const id = params.id
   const item : Product = await getProductById(id)
+
 
   return (
     <div className='flex flex-col items-center p-4 gap-4 md:flex-row justify-center'>

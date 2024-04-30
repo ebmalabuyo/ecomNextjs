@@ -20,6 +20,8 @@ const CartPage = () => {
     
 
   return (
+    <div className=''>
+    
     <div className='flex flex-col items-center gap-4'>
       <h1 className='font-bold'>Shopping Bag</h1>
           <div className='flex flex-col md:flex-row md:w-1/2 md:justify-between'>
@@ -47,6 +49,7 @@ const CartPage = () => {
                                 <button className='text-white border w-full bg-blue-700 border-blue-600 p-2 rounded'>Check Out</button>
                             </div>
             </div>
+    </div>
     </div>
   )
 }

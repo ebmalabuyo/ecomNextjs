@@ -12,6 +12,7 @@ const Navbar = () => {
     const {data: session} = useSession()
     const cartLength = useStore((state) => state.cart.length)
     // const {cart} = useStore()
+    
 
   return (
     <>

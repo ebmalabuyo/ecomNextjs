@@ -5,7 +5,7 @@ import { Product } from '@/types'
 import { ChangeEvent } from 'react'
 import sortByProperty from '@/utils'
 import { IoSearch } from "react-icons/io5";
-import ProductItem from '../ProductCard/ProductItem'
+
 
 type GridProps = {
     products: Product[]
@@ -89,7 +89,7 @@ const ProductGrid = ({products} : GridProps) => {
     }
 
   return (
-    <div className='md:flex items-start md:flex-row p-2 gap-12'>
+    <div className='md:flex items-start md:flex-row p-2 gap-12 w-full'>
     
     {/* CATEGORIES EDIT  */}
     <div className=" flex flex-col items-center md:w-48 md:sticky md:top-0 md:z-10">
@@ -109,7 +109,7 @@ const ProductGrid = ({products} : GridProps) => {
     </div>
     
     {/* SORTING TAB & SEARCH BAR */}
-    <div className=' min-w-full p-2 sticky top-0 z-10 flex justify-between items-center'>
+    <div className=' min-w-full p-2 sticky top-0 z-10 flex justify-between items-center bg-white border-b'>
     <div >
         <label htmlFor="categories" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sort By</label>
         <select onChange={(e) => handleSort(e.target.value)} value={sortValue} id="categories" className="w-12 md:w-40 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
@@ -145,6 +145,7 @@ const ProductGrid = ({products} : GridProps) => {
                     price={eachItem.price}
                     category={eachItem.category}
                     image={eachItem.image}
+                    rating={eachItem.rating}
                 /></div>
             })}
         </div>

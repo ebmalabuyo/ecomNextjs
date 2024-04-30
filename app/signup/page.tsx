@@ -1,11 +1,12 @@
 'use client'
 
 import { isEmail } from '@/utils';
-import { useSession } from 'next-auth/react';
+import {signIn, useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import React, { EventHandler, useEffect } from 'react'
 import { useState } from 'react';
 import { FormEvent, ChangeEvent } from 'react';
+import Link from 'next/link';
 
 const SignUp = () => {
   const router = useRouter()
@@ -49,7 +50,15 @@ const SignUp = () => {
           }
           else if (res.status === 200) {
             // console.log('Sign Up submitted:', formData);
+                const result = await signIn("credentials",
+            {
+              redirect: false,
+              email: formData.email,
+              password: formData.password
+            } )
+            if(result?.url){
             router.replace("/cart")
+            }
           }
           else {
             setError("Problem with sign up")
@@ -92,13 +101,16 @@ const SignUp = () => {
             required
           />
         </label>
-        {error && <p>{error}</p>}
+        <div className='flex flex-col'>
+        <Link className='text-center text-blue-500' href={"/login"}>Already have an account</Link>
         <button
           type="submit"
           className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue active:bg-blue-800"
         >
           Sign Up
         </button>
+        {error && <p>{error}</p>}
+        </div>
       </form>
     </div>))
     };
